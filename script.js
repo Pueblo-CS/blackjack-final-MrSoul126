@@ -332,32 +332,83 @@ function clearBoard() {
 // Once you get rest of the rest of the assignment completed, work on making this function
 // calculate the best hand total between A = 1 and A = 11. Hint: there can only be one high ace in a hand
 function getHandTotal(hand) {
-
+    let total = 0;
+    for (let i = 0; i < hand.length; i++) {
+        if(hand[i].charAt(0)== "A") {
+            total += 1; 
+        } 
+        else if(hand[i].charAt(0) == "2") {
+            total += 2;
+        }
+        else if(hand[i].charAt(0) == "3") {
+            total += 3;
+        }
+        else if(hand[i].charAt(0) == "4") {
+            total += 4;
+        }
+        else if(hand[i].charAt(0) == "5") {
+            total += 5;
+        }
+        else if(hand[i].charAt(0) == "6") {
+            total += 6;
+        }
+        else if(hand[i].charAt(0) == "7") {
+            total += 8;
+        }
+        else if(hand[i].charAt(0) == "8") {
+            total += 8;
+        }
+        else if(hand[i].charAt(0) == "9") {
+            total += 9;
+        }
+        else if(hand[i].charAt(0) == "T") {
+            total += 10;
+        }
+        else if(hand[i].charAt(0) == "J") {
+            total += 10;
+        }
+        else if(hand[i].charAt(0) == "Q") {
+            total += 10;
+        }
+        else if(hand[i].charAt(0) == "k") {
+            total += 10;
+        }
+        
+    }
+    return(total);
 }
 
 // Adds a card to the player's hand array and updates UI with the card
 // TODO: Call this function from Hit button click
 // TODO: Implement this function
 function playerHit() {
-
+    let newCard = getCard();
+    addPlayerCard(newCard);
+    playerHand.push(newCard);
+    checkPlayer21OrBust();
 }
 
 // Adds a card to the dealer's hand array and updates UI with the card
 // TODO: Implement this function
 function dealerHit() {
-
+    let newCard = getCard();
+    addDealerCard(newCard);
+    dealerHand.push(newCard);
+    checkDealer21OrBust()
 }
 
 // Hides hit and stay buttons during dealer's turn
 // Called from dealerTurn()
 // TODO: Implement this function
 function hidePlayerControls() {
-    
+    let controls = document.getElementById("controls") 
+        controls.style.visibility = "hidden";
 }
 
 // Shows hit and stay buttons
 // Called from deal()
 // TODO: Implement this function
 function showPlayerControls() {
-    
+    let controls = document.getElementById("controls") 
+        controls.style.visibility = "show";
 }
